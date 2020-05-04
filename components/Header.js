@@ -14,7 +14,6 @@ const style = StyleSheet.create({
     maxHeight: 50,
     backgroundColor: '#000000',
     alignSelf: 'stretch',
-    textAlign: 'center',
     marginBottom: 20,
   },
   headerText: {

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ReactNative",
-    "slug": "ReactNative",
+    "name": "Meme Generator",
+    "slug": "memegeneratorn",
     "platforms": [
       "ios",
       "android",
@@ -23,6 +23,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "A first go at React Native, calling an API and showing a randomly called meme, this now allows a user to create a meme using my imgflip account",
+    "githubUrl": "https://github.com/Nathanavie/ReactNative"
   }
 }
