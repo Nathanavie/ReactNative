@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { StyleSheet, Text, View, Button, FlatList, TouchableOpacity, TextInput, Picker, Image } from 'react-native';
 import DisplayMeme from './DisplayMeme'
 
@@ -52,31 +53,29 @@ class FetchAPI extends React.Component {
     })
   }
 
-  postForNewMeme = (templateID, topline, bottomline) => {
-    let request = require("request");
-
-    let formData = {
-      template_id : templateID,
-      username : "NathanAvie",
-      password : "WiganAth123",
-      text0 : topline,
-      text1 : bottomline
-    };
-    request.post("https://api.imgflip.com/caption_image", {
-      form : formData
-    }, function(error, response, body) {
-
-      let meme = JSON.parse(body);
-
-      if (!error && response.statusCode == 200) {
-        console.log(meme.data.url);
-        this.setState({
-          yourMeme: meme.data.url,
-        })
-      }
-
-    }.bind(this));
+  home = () => {
+    this.setState({
+      isLoaded: false,
+      createScreen: false,
+    })
   }
+
+  postForNewMeme = (templateID, topline, bottomline) => {
+
+        // Simple POST request with a JSON body using fetch
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify({ title: 'React POST Request Example' })
+        };
+        fetch(`https://api.imgflip.com/caption_image?&origin-*&template_id=${templateID}&username=NathanAvie&password=Password1&text0=${topline}&text1=${bottomline}`, requestOptions)
+            .then(response => response.json())
+            .then(data =>
+              this.setState({
+                yourMeme: data.data.url,
+              })
+            );
+    }
+
 
 
   handleSubmit = () => {
@@ -159,6 +158,10 @@ class FetchAPI extends React.Component {
           onPress={this.handleSubmit}
           title="Make this meme"
         />
+        <Button
+           onPress={this.home}
+           title="Go Back"
+         />
         </View>
         </>
       )

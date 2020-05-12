@@ -24,6 +24,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.yourcompany.yourappname"
+    },
     "description": "A first go at React Native, calling an API and showing a randomly called meme, this now allows a user to create a meme using my imgflip account",
     "githubUrl": "https://github.com/Nathanavie/ReactNative"
   }
